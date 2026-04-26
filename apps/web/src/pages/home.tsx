@@ -38,7 +38,7 @@ export function Home() {
   return (
     <div className="px-4 md:px-6 py-16">
       <div className="min-h-svh">
-        <section className="flex flex-col items-start gap-18">
+        <section className="flex flex-col items-start gap-25">
           <header className="container-wrapper flex flex-col items-start gap-8">
             <Avatar className="size-10">
               <AvatarImage src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
