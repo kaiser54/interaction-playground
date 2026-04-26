@@ -16,6 +16,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 768px) {
+  * {
+    line-height: 1.75;
+  }
+}
+
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
