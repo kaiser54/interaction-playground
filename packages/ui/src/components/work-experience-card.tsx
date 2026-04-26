@@ -89,7 +89,7 @@ function WorkExperienceCardMeta({
 
 function WorkExperienceCardAction({ className, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("absolute top-4 right-4", className)} {...props}>
+    <div className={cn("absolute top-4 right-4 hidden md:block", className)} {...props}>
       <Maximize className="size-4 text-secondary" />
     </div>
   );

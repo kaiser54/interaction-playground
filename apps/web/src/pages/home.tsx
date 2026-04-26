@@ -36,7 +36,7 @@ const FEATURED_WRITING = [
 
 export function Home() {
   return (
-    <div className="px-6 py-16">
+    <div className="px-4 md:px-6 py-16">
       <div className="min-h-svh">
         <section className="flex flex-col items-start gap-18">
           <header className="container-wrapper flex flex-col items-start gap-8">
@@ -95,7 +95,7 @@ export function Home() {
               <h2 className="text-sm font-medium text-default">Micro-interaction Explorations</h2>
               <p className="text-sm text-neutral">Interaction studies focused on motion clarity, feedback timing, and perceived performance.</p>
             </div>
-            <div className="pt-2 grid grid-cols-3 gap-2 max-w-[1000px] mx-auto">
+            <div className="pt-2 grid grid-cols-1 md:grid-cols-3 gap-2 max-w-[1000px] mx-auto">
               {MICRO_INTERACTIONS.map((interaction) => (
                 <MicroInteractionCard key={interaction.title}>
                   <MicroInteractionCard.Preview />
