@@ -2,6 +2,8 @@ import { WorkExperienceCard } from "@workspace/ui/components/work-experience-car
 import { useState } from "react";
 import { LayoutGroup, motion } from "motion/react";
 import { ModalSkin } from "./modal-skin";
+import { X } from "lucide-react";
+import { GlassWrapper } from "@workspace/ui/components/glass-wrapper";
 
 const WORK_EXPERIENCES = [
     { id: "linear-se", company: "Linear", period: "2021 - Present", role: "Software Engineer" },
@@ -73,6 +75,9 @@ export function WorkExperienceSection() {
                     dialogLayoutId={selectedCompany ? `work-experience-card-${selectedCompany.id}` : undefined}
                     dialogTransition={SHARED_ITEM_TRANSITION}
                 >
+                    {/* <div className="absolute top-4 right-4"> */}
+
+                    {/* </div> */}
                     {selectedCompany ? (
                         <div className="space-y-4">
                             <WorkExperienceCard
@@ -98,6 +103,14 @@ export function WorkExperienceSection() {
                                         <WorkExperienceCard.Meta period={selectedCompany.period} role={selectedCompany.role} />
                                     </motion.div>
                                 </WorkExperienceCard.Content>
+                                <div className="ml-auto">
+                                <GlassWrapper
+                                    className="size-8 rounded-full bg-secondary/20"
+                                    ariaLabel="Close about"
+                                >
+                                    <X className="size-3 text-secondary" />
+                                </GlassWrapper>
+                                </div>
                             </WorkExperienceCard>
                             <div className="text-sm text-neutral">
                                 Throughout their journey, players will encounter diverse alien races, each with their own unique cultures and technologies. Engage in thrilling space combat, negotiate complex diplomatic relations, and make critical decisions that affect the balance of power in the galaxy.
