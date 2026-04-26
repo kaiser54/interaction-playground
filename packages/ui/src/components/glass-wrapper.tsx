@@ -185,7 +185,7 @@ export function GlassWrapper({
           height: 50%;
         }
       `}</style>
-      <div className={cn("ui-glass-wrapper w-fit h-fit", containerClassName)}>
+      <div className={cn("ui-glass-wrapper w-fit h-fit rounded-full", containerClassName)}>
         <div
           ref={bubbleRef}
           aria-label={ariaLabel}
