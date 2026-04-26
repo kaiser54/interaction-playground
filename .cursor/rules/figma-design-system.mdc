@@ -1,0 +1,55 @@
+---
+description: Rules for implementing Figma designs in this monorepo using shared UI tokens and composable React components.
+globs: ["apps/web/src/**/*.tsx", "packages/ui/src/components/**/*.tsx", "packages/ui/src/styles/**/*.css"]
+alwaysApply: false
+---
+
+# Figma MCP Integration Rules
+
+## Required Figma Flow
+
+1. Run `get_design_context` for the target node first.
+2. Run `get_screenshot` for the same node and compare before finalizing UI.
+3. If output is large, run `get_metadata` and then fetch focused nodes with `get_design_context`.
+4. Extract reusable patterns (cards, rows, links, sections) before coding.
+5. Translate Figma output into this project's conventions (React + Tailwind v4 + CSS variables in `packages/ui`).
+
+## Project Structure and Component Ownership
+
+- IMPORTANT: Shared UI building blocks live in `packages/ui/src/components`.
+- IMPORTANT: Application composition lives in `apps/web/src/pages`.
+- Reuse `@workspace/ui/components/*` from the app; avoid page-local duplicate components when a shared component is appropriate.
+- Keep components composition-first (clear children/slot APIs, data-driven lists) and avoid boolean-prop proliferation.
+
+## Styling and Tokens
+
+- IMPORTANT: Global design tokens are defined in `packages/ui/src/styles/globals.css`.
+- IMPORTANT: Never hardcode colors when a semantic token exists; use semantic utilities (`bg-card`, `text-muted-foreground`, `border-border`, etc.).
+- Add new semantic tokens in `:root` and `.dark`, then expose with `@theme inline`.
+- Keep typography consistent with existing tokenized font variables (`--font-sans`, `--font-heading`).
+- Prefer responsive utility classes with semantic spacing and width constraints over one-off fixed page-level values.
+
+## Composition and Implementation Conventions
+
+- Build reusable section patterns:
+  - section heading + description container
+  - reusable content list row (used by Featured Writing and Personal Projects)
+  - reusable work experience row
+  - reusable micro-interaction card
+  - reusable inline text link group (Journal/Case Studies/etc.)
+- Keep repeated content in typed arrays and render with `map`.
+- Favor explicit variant APIs with `cva` where variants are truly needed.
+- Avoid over-engineering: ship minimal reusable primitives that match current page requirements.
+
+## Asset and Icon Rules
+
+- Use Figma-provided assets/URLs when present.
+- IMPORTANT: Do not add new icon packages for Figma implementation tasks; use existing dependencies and assets.
+- If assets are required, store them in app/public paths or shared asset locations already used by the repo.
+
+## Quality and Validation
+
+- Validate light and dark themes for every Figma-driven section.
+- Validate responsive behavior across mobile/tablet/desktop breakpoints.
+- Run typecheck/lint before completion.
+- Compare against the Figma screenshot for spacing, hierarchy, typography rhythm, and interactive affordances.
