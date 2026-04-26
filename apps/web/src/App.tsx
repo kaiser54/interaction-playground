@@ -46,7 +46,7 @@ function SeoHead() {
 
 function App() {
   return (
-    <div className="pb-40 py-24">
+    <div className="pb-40 py-24 px-4 md:px-6">
       <ProgressiveBlueOverlay
         colorRgb="0 0 0"
         blur={8}
@@ -54,6 +54,7 @@ function App() {
         gradientOpacity={0}
         maskOpacity={0.95}
         maskStop={55}
+        position="top"
       />
       <SeoHead />
       <Header />
