@@ -1,11 +1,6 @@
 import { MicroInteractionCard } from "@workspace/ui/components/micro-interaction-card";
 import { PersonalProjectCard } from "@workspace/ui/components/personal-project-card";
-import { WorkExperienceCard } from "@workspace/ui/components/work-experience-card";
-
-const WORK_EXPERIENCES = [
-  { company: "Linear", period: "2021 - Present", role: "Software Engineer" },
-  { company: "Linear", period: "2021 - Present", role: "Software Engineer" },
-];
+import { WorkExperienceSection } from "../components/work-experience-section";
 
 const PERSONAL_PROJECTS = [
   { title: "Posthearts", description: "A web app that helps people write, design, and send letters to others or future self." },
@@ -55,21 +50,7 @@ export function Home() {
             <h2 className="text-sm font-medium text-default">Where I've Worked</h2>
             <p className="text-sm text-neutral">Teams and roles that shaped my product thinking and interaction craft.</p>
             <div className="pt-2">
-              {WORK_EXPERIENCES.map((experience, index) => (
-                <div key={`${experience.company}-${experience.period}-${experience.role}-${index}`}>
-                  <WorkExperienceCard>
-                    <WorkExperienceCard.Avatar />
-                    <WorkExperienceCard.Content>
-                      <WorkExperienceCard.Company>{experience.company}</WorkExperienceCard.Company>
-                      <WorkExperienceCard.Meta period={experience.period} role={experience.role} />
-                    </WorkExperienceCard.Content>
-                    <WorkExperienceCard.Action />
-                  </WorkExperienceCard>
-                  {index < WORK_EXPERIENCES.length - 1 ? (
-                    <div className="border-b border-border w-[calc(100%-32px)] mx-auto" />
-                  ) : null}
-                </div>
-              ))}
+              <WorkExperienceSection />
             </div>
           </section>
           <section className="container-wrapper space-y-4 w-full">
