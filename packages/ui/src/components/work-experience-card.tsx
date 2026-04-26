@@ -1,10 +1,15 @@
 import { Maximize } from "lucide-react";
 import type { ComponentProps } from "react";
+import { motion, type HTMLMotionProps } from "motion/react";
 
 import { cn } from "@workspace/ui/lib/utils";
+import {
+  showIconTransition,
+  showIconVariant,
+} from "@workspace/ui/motion/show-icon-variant";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
-type WorkExperienceCardRootProps = ComponentProps<"div">;
+type WorkExperienceCardRootProps = HTMLMotionProps<"div">;
 
 type WorkExperienceCardAvatarProps = {
   avatarSrc?: string;
@@ -26,7 +31,9 @@ function WorkExperienceCardRoot({
   ...props
 }: WorkExperienceCardRootProps) {
   return (
-    <div
+    <motion.div
+      initial="initial"
+      whileHover="hover"
       className={cn(
         "flex items-center gap-4 p-2 rounded-[16px] relative hover:bg-gray-1 transition-colors duration-300 cursor-pointer",
         className
@@ -34,7 +41,7 @@ function WorkExperienceCardRoot({
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -87,11 +94,16 @@ function WorkExperienceCardMeta({
   );
 }
 
-function WorkExperienceCardAction({ className, ...props }: ComponentProps<"div">) {
+function WorkExperienceCardAction({ className, ...props }: HTMLMotionProps<"div">) {
   return (
-    <div className={cn("absolute top-4 right-4 hidden md:block", className)} {...props}>
+    <motion.div
+      variants={showIconVariant}
+      transition={showIconTransition}
+      className={cn("absolute top-4 right-4 hidden md:block pointer-events-none", className)}
+      {...props}
+    >
       <Maximize className="size-4 text-secondary" />
-    </div>
+    </motion.div>
   );
 }
 

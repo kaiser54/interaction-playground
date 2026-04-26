@@ -1,12 +1,22 @@
 import { Maximize } from "lucide-react";
 import type { ComponentProps } from "react";
+import { motion, type HTMLMotionProps } from "motion/react";
 
+import {
+  scaleCardTransition,
+  scaleCardVariant,
+} from "@workspace/ui/motion/scale-card-variant";
+import {
+  showIconTransition,
+  showIconVariant,
+} from "@workspace/ui/motion/show-icon-variant";
 import { cn } from "@workspace/ui/lib/utils";
 
-type MicroInteractionCardRootProps = ComponentProps<"div">;
+type MicroInteractionCardRootProps = HTMLMotionProps<"div">;
 type MicroInteractionCardPreviewProps = ComponentProps<"div">;
 type MicroInteractionCardTitleProps = ComponentProps<"h3">;
 type MicroInteractionCardDescriptionProps = ComponentProps<"p">;
+type MicroInteractionCardActionProps = HTMLMotionProps<"span">;
 
 function MicroInteractionCardRoot({
   className,
@@ -14,12 +24,17 @@ function MicroInteractionCardRoot({
   ...props
 }: MicroInteractionCardRootProps) {
   return (
-    <div
-      className={cn("flex flex-col items-start gap-2 p-2 rounded-[12px] relative", className)}
+    <motion.div
+      initial="initial"
+      whileHover="hover"
+      whileTap="tap"
+      variants={scaleCardVariant}
+      transition={scaleCardTransition}
+      className={cn("group flex flex-col items-start gap-2 p-2 rounded-[12px] cursor-pointer relative", className)}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -54,11 +69,16 @@ function MicroInteractionCardDescription({
   );
 }
 
-function MicroInteractionCardAction({ className, ...props }: ComponentProps<"span">) {
+function MicroInteractionCardAction({ className, ...props }: MicroInteractionCardActionProps) {
   return (
-    <span className={cn("absolute top-4 right-4", className)} {...props}>
+    <motion.span
+      variants={showIconVariant}
+      transition={showIconTransition}
+      className={cn("absolute top-4 right-4 pointer-events-none", className)}
+      {...props}
+    >
       <Maximize className="size-4 text-secondary" />
-    </span>
+    </motion.span>
   );
 }
 
