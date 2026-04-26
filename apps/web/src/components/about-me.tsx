@@ -18,8 +18,9 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID }: AboutMeProps) {
     const dragX = useMotionValue(0);
     const dragY = useMotionValue(0);
     const dragDistance = useMotionValue(0);
-    const overlayOpacity = useTransform(dragDistance, [0, 260], [1, 0.2]);
-    const textOpacity = useTransform(dragDistance, [0, 180], [1, 0]);
+    const overlayOpacity = useTransform(dragDistance, [0, 420], [1, 0.1]);
+    const textOpacity = useTransform(dragDistance, [0, 220], [1, 0]);
+    const imageScale = useTransform(dragDistance, [0, 420], [1, 0.55]);
     const overlayBackground = useMotionTemplate`rgb(139 92 246 / ${overlayOpacity})`;
 
     useEffect(() => {
@@ -51,13 +52,13 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID }: AboutMeProps) {
                     layoutId={AVATAR_LAYOUT_ID}
                     transition={AVATAR_SHARED_TRANSITION}
                     drag
-                    dragElastic={0.2}
+                    dragElastic={0.35}
                     dragMomentum
                     dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
                     onDragStart={() => setIsDragging(true)}
                     onDrag={(_, info) => {
                         const distance = Math.hypot(info.offset.x, info.offset.y);
-                        dragDistance.set(Math.min(distance, 260));
+                        dragDistance.set(Math.min(distance, 420));
                     }}
                     onDragEnd={(_, info) => {
                         setIsDragging(false);
@@ -80,6 +81,7 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID }: AboutMeProps) {
                     style={{
                         x: dragX,
                         y: dragY,
+                        scale: imageScale,
                         borderRadius: "12px",
                         willChange: "transform, border-radius",
                         cursor: "grab",
