@@ -10,6 +10,13 @@
 @source "../**/*.{ts,tsx}";
 
 :root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
@@ -129,8 +136,16 @@
     --color-portfolio-preview: var(--portfolio-preview);
     --color-portfolio-subtle-text: var(--portfolio-subtle-text);
     --color-portfolio-divider: var(--portfolio-divider);
-    --font-sans: 'Geist Variable', sans-serif;
-    --font-heading: 'Inter Variable', sans-serif;
+
+    --color-default: #1B1B1B;
+    --color-neutral: #5C5C5C;
+    --color-secondary: #9B9B9B;
+    --color-border: rgba(0, 0, 0, 0.05);
+    --color-gray-1: #F9F9F9;
+    /* --font-sans: 'Geist Variable', sans-serif; */
+    --font-heading: 'Inter', sans-serif;
+    --font-sans: 'Inter Variable', sans-serif;
+    --text-15: 15.3px;
 }
 
 @layer base {
