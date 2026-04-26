@@ -33,9 +33,9 @@ export function AboutMe({ onClose }: AboutMeProps) {
                 className="max-w-[900px] mx-auto space-y-4 w-full p-4"
                 onClick={(event) => event.stopPropagation()}
             >
-                <Avatar className="size-85 mx-auto">
+                <Avatar className="size-50 md:size-85 mx-auto">
                     <AvatarImage className={cn("rounded-md")} src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
-                    <AvatarFallback>CN</AvatarFallback>
+                    <AvatarFallback className={'rounded-md'}>CN</AvatarFallback>
                 </Avatar>
                 <div className="hidden">
                     <h2 className="text-sm font-medium text-default">About Me</h2>

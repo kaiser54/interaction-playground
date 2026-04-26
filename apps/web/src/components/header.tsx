@@ -7,7 +7,7 @@ export function Header() {
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     return (
         <>
-            <div className="container-wrapper pt-16 mb-8">
+            <div className="container-wrapper pt-0 mb-8">
                 <button
                     type="button"
                     aria-label="Open About Me"
