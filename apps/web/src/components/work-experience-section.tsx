@@ -112,9 +112,14 @@ export function WorkExperienceSection() {
                                 </GlassWrapper>
                                 </div>
                             </WorkExperienceCard>
-                            <div className="text-sm text-neutral">
+                            <motion.div
+                                className="text-sm text-neutral"
+                                initial={{ opacity: 0.5, y: 8, filter: "blur(4px)" }}
+                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                transition={{ duration: 0.28, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
+                            >
                                 Throughout their journey, players will encounter diverse alien races, each with their own unique cultures and technologies. Engage in thrilling space combat, negotiate complex diplomatic relations, and make critical decisions that affect the balance of power in the galaxy.
-                            </div>
+                            </motion.div>
                         </div>
                     ) : null}
                 </ModalSkin>
