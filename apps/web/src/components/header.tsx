@@ -2,19 +2,22 @@ import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useState } from "react";
 import { AboutMe } from "./about-me";
 import { Avatar, AvatarFallback, AvatarImage } from "@workspace/ui/components/avatar";
+import { GlassWrapper } from "@workspace/ui/components/glass-wrapper";
+import { Ellipsis } from "lucide-react";
 
 const AVATAR_LAYOUT_ID = "profile-avatar";
+const ACTION_BUTTON_LAYOUT_ID = "about-action-button";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AVATAR_SHARED_TRANSITION = {
-    layout: { duration: 0.28, ease: [0.23, 1, 0.32, 1]  as const },
-    borderRadius: { duration: 0.2, ease: [0.23, 1, 0.32, 0]  as const },
+    layout: { duration: 0.28, ease: [0.23, 1, 0.32, 1] as const },
+    borderRadius: { duration: 0.2, ease: [0.23, 1, 0.32, 0] as const },
 };
 
 export function Header() {
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     return (
         <LayoutGroup id="about-me-transition">
-            <div className="container-wrapper pt-0 mb-8">
+            <div className="container-wrapper pt-0 mb-8 flex items-center justify-between">
                 <button
                     type="button"
                     aria-label="Open About Me"
@@ -37,13 +40,24 @@ export function Header() {
                         <span className="block size-10" aria-hidden />
                     )}
                 </button>
+                <motion.div
+                    layoutId={ACTION_BUTTON_LAYOUT_ID}
+                    transition={AVATAR_SHARED_TRANSITION}
+                >
+                    <GlassWrapper
+                        className="size-10 rounded-full bg-black/10"
+                        ariaLabel="Close about"
+                    >
+                        <Ellipsis className="size-4" />
+                    </GlassWrapper>
+                </motion.div>
             </div>
-
             <AnimatePresence>
                 {isAboutOpen ? (
                     <AboutMe
                         onClose={() => setIsAboutOpen(false)}
                         AVATAR_LAYOUT_ID={AVATAR_LAYOUT_ID}
+                        ACTION_BUTTON_LAYOUT_ID={ACTION_BUTTON_LAYOUT_ID}
                     />
                 ) : null}
             </AnimatePresence>

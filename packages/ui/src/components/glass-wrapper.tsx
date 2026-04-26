@@ -140,8 +140,6 @@ export function GlassWrapper({
     <>
       <style>{`
         .ui-glass-wrapper {
-          // width: 120px;
-          // height: 120px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -154,12 +152,9 @@ export function GlassWrapper({
           --glass-light-x: 50%;
           --glass-light-y: 50%;
           position: relative;
-          // width: 84px;
-          // height: 84px;
-          // border-radius: 50%;
           border: none;
           overflow: hidden;
-          background-color: rgb(255 255 255 / 0.6);
+          // background-color: rgb(255 255 255 / 0.6);
           backdrop-filter: saturate(180%) blur(20px);
           -webkit-backdrop-filter: saturate(180%) blur(20px);
           box-shadow: 2px 2px 1px 0 #ffffff30 inset, -1px -1px 1px 1px #ffffff4d inset;
@@ -172,7 +167,6 @@ export function GlassWrapper({
           content: "";
           position: absolute;
           inset: 0;
-          // border-radius: 50%;
           background: radial-gradient(
             circle at var(--glass-light-x) var(--glass-light-y),
             rgb(255 255 255 / 0.9) 0%,
@@ -191,11 +185,11 @@ export function GlassWrapper({
           height: 50%;
         }
       `}</style>
-      <div className={cn("ui-glass-wrapper", containerClassName)}>
+      <div className={cn("ui-glass-wrapper w-fit h-fit", containerClassName)}>
         <div
           ref={bubbleRef}
           aria-label={ariaLabel}
-          className={cn("ui-glass-bubble", className)}
+          className={cn("ui-glass-bubble bg-white/60", className)}
           {...props}
         >
           {children}
