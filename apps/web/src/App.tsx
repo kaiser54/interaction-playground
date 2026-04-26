@@ -54,7 +54,7 @@ function App() {
         gradientOpacity={0}
         maskOpacity={0.95}
         maskStop={55}
-        position="top"
+        position="bottom"
       />
       <SeoHead />
       <Header />
