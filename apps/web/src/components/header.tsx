@@ -1,12 +1,13 @@
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useState } from "react";
 import { AboutMe } from "./about-me";
+import { Avatar, AvatarFallback, AvatarImage } from "@workspace/ui/components/avatar";
 
 const AVATAR_LAYOUT_ID = "profile-avatar";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AVATAR_SHARED_TRANSITION = {
     layout: { duration: 0.28, ease: [0.23, 1, 0.32, 1]  as const },
-    borderRadius: { duration: 0.22, ease: [0.23, 1, 0.32, 0]  as const },
+    borderRadius: { duration: 0.2, ease: [0.23, 1, 0.32, 0]  as const },
 };
 
 export function Header() {
@@ -21,14 +22,17 @@ export function Header() {
                     onClick={() => setIsAboutOpen(true)}
                 >
                     {!isAboutOpen ? (
-                        <motion.img
+                        <motion.div
                             layoutId={AVATAR_LAYOUT_ID}
                             transition={AVATAR_SHARED_TRANSITION}
-                            src="https://github.com/shadcn.png"
-                            alt="Portrait of Temitope Agboola"
-                            className="size-10 object-cover"
-                            style={{ borderRadius: "9999px", willChange: "transform, border-radius" }}
-                        />
+                            className="size-10"
+                            style={{ willChange: "transform" }}
+                        >
+                            <Avatar className="size-10">
+                                <AvatarImage src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                        </motion.div>
                     ) : (
                         <span className="block size-10" aria-hidden />
                     )}
