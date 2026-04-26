@@ -1,4 +1,6 @@
-# shadcn/ui monorepo template
+# interaction-playground
+
+## shadcn/ui monorepo template
 
 This is a Vite monorepo template with shadcn/ui.
 
