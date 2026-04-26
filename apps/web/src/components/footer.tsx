@@ -1,4 +1,4 @@
-export default function Footer() {
+export function Footer() {
     return (
         <section className="container-wrapper space-y-4 w-full p-4">
             <h2 className="text-sm font-medium text-default">Get in touch</h2>

@@ -4,7 +4,8 @@ import { createBrowserRouter } from "react-router";
 import { ProgressiveBlueOverlay } from "@workspace/ui/components/progressive-blue-overlay";
 
 import { Home } from "./pages/home";
-import Footer from "./components/footer";
+import { Footer } from "./components/footer";
+import { Header } from "./components/header";
 
 const router = createBrowserRouter([
   {
@@ -47,16 +48,16 @@ function App() {
   return (
     <div className="pb-40 py-24">
       <ProgressiveBlueOverlay
-        colorRgb="255 255 255"
+        colorRgb="0 0 0"
         blur={8}
-        height={200}
-        gradientOpacity={0.3}
+        height={150}
+        gradientOpacity={0}
         maskOpacity={0.95}
         maskStop={55}
       />
       <SeoHead />
+      <Header />
       <RouterProvider router={router} />
-      {/* <AboutMe /> */}
       <Footer />
     </div>
   );

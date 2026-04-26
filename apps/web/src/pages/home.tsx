@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@workspace/ui/components/avatar";
 import { MicroInteractionCard } from "@workspace/ui/components/micro-interaction-card";
 import { PersonalProjectCard } from "@workspace/ui/components/personal-project-card";
 import { WorkExperienceCard } from "@workspace/ui/components/work-experience-card";
@@ -35,15 +34,12 @@ const FEATURED_WRITING = [
 
 
 export function Home() {
+
   return (
-    <div className="px-4 md:px-6 py-16">
+    <div className="px-4 md:px-6 py-16 pt-0">
       <div className="min-h-svh">
         <section className="flex flex-col items-start gap-25">
           <header className="container-wrapper flex flex-col items-start gap-8">
-            <Avatar className="size-10">
-              <AvatarImage src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
             <div className="space-y-0">
               <h1 className="text-sm font-medium text-default">Temitope Agboola</h1>
               <p className="text-sm font-normal text-neutral">Software Engineer</p>
