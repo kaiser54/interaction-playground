@@ -25,7 +25,7 @@ export function AboutMe({ onClose }: AboutMeProps) {
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(20px)" }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="h-svh w-screen fixed inset-0 overflow-y-auto pt-[30svh] pb-[20vh] overscroll-none z-10"
+            className="h-svh w-screen fixed inset-0 overflow-y-auto pt-[33svh] pb-[20vh] overscroll-none z-10"
             onClick={onClose}
             style={{ backgroundColor: "rgb(139, 92, 246)" }}
         >
@@ -33,7 +33,7 @@ export function AboutMe({ onClose }: AboutMeProps) {
                 className="max-w-[900px] mx-auto space-y-4 w-full p-4"
                 onClick={(event) => event.stopPropagation()}
             >
-                <Avatar className="size-100 mx-auto">
+                <Avatar className="size-85 mx-auto">
                     <AvatarImage className={cn("rounded-md")} src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
