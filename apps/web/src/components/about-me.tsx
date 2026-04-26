@@ -7,6 +7,8 @@ import {
     useTransform,
 } from "motion/react";
 import { AVATAR_SHARED_TRANSITION } from "./header";
+import { GlassWrapper } from "@workspace/ui/components/glass-wrapper";
+import { X } from "lucide-react";
 
 type AboutMeProps = {
     onClose: () => void;
@@ -41,13 +43,18 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID }: AboutMeProps) {
             exit={{ opacity: 0, filter: "blur(20px)" }}
             transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
             className="h-svh w-screen fixed inset-0 overflow-y-auto pt-[33svh] pb-[20vh] blur-2xl overscroll-none z-10"
-            onClick={onClose}
+            // onClick={onClose}
             style={{ backgroundColor: overlayBackground }}
         >
             <section
                 className="max-w-[900px] mx-auto space-y-4 w-full p-4"
-                onClick={(event) => event.stopPropagation()}
+                // onClick={(event) => event.stopPropagation()}
             >
+                <button className="fixed top-4 right-4" onClick={onClose}>
+                    <GlassWrapper className="size-10 rounded-full">
+                        <X className="size-4" />
+                    </GlassWrapper>
+                </button>
                 <motion.img
                     layoutId={AVATAR_LAYOUT_ID}
                     transition={AVATAR_SHARED_TRANSITION}
