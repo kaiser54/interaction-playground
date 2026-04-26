@@ -45,7 +45,7 @@ export function Header() {
                     transition={AVATAR_SHARED_TRANSITION}
                 >
                     <GlassWrapper
-                        className="size-10 rounded-full bg-black/10"
+                        className="size-10 rounded-full bg-secondary/20"
                         ariaLabel="Close about"
                     >
                         <Ellipsis className="size-4" />
