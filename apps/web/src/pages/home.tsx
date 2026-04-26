@@ -41,7 +41,7 @@ export function Home() {
         <section className="flex flex-col items-start gap-18">
           <header className="container-wrapper flex flex-col items-start gap-8">
             <Avatar className="size-10">
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="space-y-0">
