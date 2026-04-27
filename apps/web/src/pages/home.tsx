@@ -1,6 +1,7 @@
 import { MicroInteractionCard } from "@workspace/ui/components/micro-interaction-card";
 import { PersonalProjectCard } from "@workspace/ui/components/personal-project-card";
-import { MorphingDialogBasicTwo } from "../components/work-experience-section";
+import { WorkExperienceSection } from "../components/work-experience-section";
+import { MorphingDialogBasicTwo } from "../components/text-morph";
 
 const PERSONAL_PROJECTS = [
   { title: "Posthearts", description: "A web app that helps people write, design, and send letters to others or future self." },
@@ -50,7 +51,7 @@ export function Home() {
             <h2 className="text-sm font-medium text-default">Where I've Worked</h2>
             <p className="text-sm text-neutral">Teams and roles that shaped my product thinking and interaction craft.</p>
             <div className="pt-2">
-              <MorphingDialogBasicTwo />
+              <WorkExperienceSection />
             </div>
           </section>
           <section className="container-wrapper space-y-4 w-full">
@@ -98,6 +99,9 @@ export function Home() {
               ))}
             </div>
           </section>
+          <div className="container-wrapper w-full">
+            <MorphingDialogBasicTwo />
+          </div>
         </section>
       </div>
     </div>
