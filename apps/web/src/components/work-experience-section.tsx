@@ -1,129 +1,87 @@
-import { WorkExperienceCard } from "@workspace/ui/components/work-experience-card";
-import { useState } from "react";
-import { LayoutGroup, motion } from "motion/react";
-import { ModalSkin } from "./modal-skin";
-import { X } from "lucide-react";
-import { GlassWrapper } from "@workspace/ui/components/glass-wrapper";
+import {
+    MorphingDialog,
+    MorphingDialogTrigger,
+    MorphingDialogContent,
+    MorphingDialogTitle,
+    MorphingDialogImage,
+    MorphingDialogSubtitle,
+    MorphingDialogClose,
+    MorphingDialogContainer,
+} from '@workspace/ui/components/motion-primitives/morphing-dialog';
+import { ScrollArea } from '@workspace/ui/components/scroll-area';
 
-const WORK_EXPERIENCES = [
-    { id: "linear-se", company: "Linear", period: "2021 - Present", role: "Software Engineer" },
-    { id: "openai-se", company: "Open AI", period: "2021 - Present", role: "Software Engineer" },
-];
 
-type WorkExperience = (typeof WORK_EXPERIENCES)[number];
-const SHARED_ITEM_TRANSITION = { duration: 0.48, ease: [0.23, 1, 0.32, 1] as const };
-
-export function WorkExperienceSection() {
-    const [selectedCompany, setSelectedCompany] = useState<WorkExperience | null>(null);
-
-    const closeDialog = () => setSelectedCompany(null);
-
+export function MorphingDialogBasicTwo() {
     return (
-        <LayoutGroup id="work-experience-dialog-transition">
-            <>
-                {WORK_EXPERIENCES.map((experience, index) => (
-                    <div key={experience.id}>
-                        <div
-                            role="button"
-                            tabIndex={0}
-                            className="rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            onClick={() => setSelectedCompany(experience)}
-                            onKeyDown={(event) => {
-                                if (event.key !== "Enter" && event.key !== " ") return;
-                                event.preventDefault();
-                                setSelectedCompany(experience);
-                            }}
-                            aria-label={`Open ${experience.company} details`}
-                        >
-                            <WorkExperienceCard
-                                layoutId={`work-experience-card-${experience.id}`}
-                                transition={SHARED_ITEM_TRANSITION}
-                            >
-                                <motion.div
-                                    layoutId={`work-experience-avatar-${experience.id}`}
-                                    transition={SHARED_ITEM_TRANSITION}
-                                >
-                                    <WorkExperienceCard.Avatar />
-                                </motion.div>
-                                <WorkExperienceCard.Content>
-                                    <motion.div
-                                        layoutId={`work-experience-company-${experience.id}`}
-                                        transition={SHARED_ITEM_TRANSITION}
-                                    >
-                                        <WorkExperienceCard.Company>{experience.company}</WorkExperienceCard.Company>
-                                    </motion.div>
-                                    <motion.div
-                                        layoutId={`work-experience-meta-${experience.id}`}
-                                        transition={SHARED_ITEM_TRANSITION}
-                                    >
-                                        <WorkExperienceCard.Meta period={experience.period} role={experience.role} />
-                                    </motion.div>
-                                </WorkExperienceCard.Content>
-                                <WorkExperienceCard.Action />
-                            </WorkExperienceCard>
-                        </div>
-                        {index < WORK_EXPERIENCES.length - 1 ? (
-                            <div className="border-b border-border w-[calc(100%-32px)] mx-auto" />
-                        ) : null}
+        <MorphingDialog
+            transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 24,
+            }}
+        >
+            <MorphingDialogTrigger
+                style={{
+                    borderRadius: '4px',
+                }}
+                className='bg-white'
+            >
+                <div className='flex items-center space-x-4'>
+                    <MorphingDialogImage
+                        src='https://m.media-amazon.com/images/I/71skAxiMC2L._AC_UF1000,1000_QL80_.jpg'
+                        alt='Linear logo'
+                        className='size-12 object-cover object-top'
+                        style={{
+                            borderRadius: '4px',
+                        }}
+                    />
+                    <div className='flex flex-col items-start justify-center space-y-0'>
+                        <MorphingDialogTitle className='text-sm font-medium text-neutral'>
+                            Linear
+                        </MorphingDialogTitle>
+                        <MorphingDialogSubtitle className='text-sm text-secondary flex items-center gap-2'>
+                            2021 - Present
+                            <span className='text-secondary text-[10px]'>•</span>
+                            Software Engineer
+                        </MorphingDialogSubtitle>
                     </div>
-                ))}
-                <ModalSkin
-                    open={selectedCompany !== null}
-                    onClose={closeDialog}
-                    titleId="work-experience-dialog-title"
-                    className="max-w-[700px] p-4"
-                    dialogLayoutId={selectedCompany ? `work-experience-card-${selectedCompany.id}` : undefined}
-                    dialogTransition={SHARED_ITEM_TRANSITION}
+                </div>
+            </MorphingDialogTrigger>
+            <MorphingDialogContainer>
+                <MorphingDialogContent
+                    style={{
+                        borderRadius: '12px',
+                    }}
+                    className='relative h-auto w-[700px] border border-gray-100 bg-white'
                 >
-                    {/* <div className="absolute top-4 right-4"> */}
-
-                    {/* </div> */}
-                    {selectedCompany ? (
-                        <div className="space-y-4">
-                            <WorkExperienceCard
-                                className="w-full hover:bg-transparent p-0"
-                            >
-                                <motion.div
-                                    layoutId={`work-experience-avatar-${selectedCompany.id}`}
-                                    transition={SHARED_ITEM_TRANSITION}
-                                >
-                                    <WorkExperienceCard.Avatar />
-                                </motion.div>
-                                <WorkExperienceCard.Content>
-                                    <motion.div
-                                        layoutId={`work-experience-company-${selectedCompany.id}`}
-                                        transition={SHARED_ITEM_TRANSITION}
-                                    >
-                                        <WorkExperienceCard.Company>{selectedCompany.company}</WorkExperienceCard.Company>
-                                    </motion.div>
-                                    <motion.div
-                                        layoutId={`work-experience-meta-${selectedCompany.id}`}
-                                        transition={SHARED_ITEM_TRANSITION}
-                                    >
-                                        <WorkExperienceCard.Meta period={selectedCompany.period} role={selectedCompany.role} />
-                                    </motion.div>
-                                </WorkExperienceCard.Content>
-                                <div className="ml-auto">
-                                <GlassWrapper
-                                    className="size-8 rounded-full bg-secondary/20"
-                                    ariaLabel="Close about"
-                                >
-                                    <X className="size-3 text-secondary" />
-                                </GlassWrapper>
+                    <ScrollArea className='max-h-[90vh]'>
+                        <div className='relative p-2'>
+                            <div className='flex items-center space-x-4'>
+                                <MorphingDialogImage
+                                    src='https://m.media-amazon.com/images/I/71skAxiMC2L._AC_UF1000,1000_QL80_.jpg'
+                                    alt='Linear logo'
+                                    className='size-12 object-cover object-top'
+                                    style={{
+                                        borderRadius: '4px',
+                                    }}
+                                />
+                                <div className='flex flex-col items-start justify-center space-y-0'>
+                                    <MorphingDialogTitle className='text-sm font-medium text-neutral'>
+                                        Linear
+                                    </MorphingDialogTitle>
+                                    <MorphingDialogSubtitle className='text-sm text-secondary flex items-center gap-2'>
+                                        2021 - Present
+                                        <span className='text-secondary text-[10px]'>•</span>
+                                        Software Engineer
+                                    </MorphingDialogSubtitle>
                                 </div>
-                            </WorkExperienceCard>
-                            <motion.div
-                                className="text-sm text-neutral"
-                                initial={{ opacity: 0.5, y: 8, filter: "blur(4px)" }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                transition={{ duration: 0.28, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
-                            >
-                                Throughout their journey, players will encounter diverse alien races, each with their own unique cultures and technologies. Engage in thrilling space combat, negotiate complex diplomatic relations, and make critical decisions that affect the balance of power in the galaxy.
-                            </motion.div>
+                            </div>
+                            {/* timeline here */}
                         </div>
-                    ) : null}
-                </ModalSkin>
-            </>
-        </LayoutGroup>
-    )
+                    </ScrollArea>
+                    <MorphingDialogClose className='text-zinc-500' />
+                </MorphingDialogContent>
+            </MorphingDialogContainer>
+        </MorphingDialog>
+    );
 }

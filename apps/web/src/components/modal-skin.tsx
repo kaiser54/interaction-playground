@@ -112,7 +112,7 @@ export function ModalSkin({
     <AnimatePresence>
       {open ? (
         <motion.div
-          className={cn("fixed inset-0 z-50 grid place-items-center p-4")}
+          className={cn("fixed inset-0 z-50 flex justify-center pt-10 px-4")}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -137,7 +137,7 @@ export function ModalSkin({
             aria-describedby={descriptionId}
             tabIndex={-1}
             onKeyDown={onDialogKeyDown}
-            className={cn("relative z-10 w-full max-w-2xl rounded-2xl bg-white shadow-2xs", className)}
+            className={cn("relative z-10 w-full max-w-2xl rounded-2xl bg-white h-fit shadow-2xs", className)}
             initial={{ opacity: 0, y: 18, scale: 0.98, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: 8, scale: 0.985, filter: "blur(6px)" }}

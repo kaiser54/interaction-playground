@@ -89,7 +89,7 @@ function WorkExperienceCardMeta({
 }: WorkExperienceCardMetaProps) {
   return (
     <p className={cn("text-sm text-secondary flex items-center gap-2", className)}>
-      {period} <span className="text-secondary text-[10px]">•</span> {role}
+      {period} <span className="text-secondary text-[10px] hidden">•</span> <span>{role}</span>
     </p>
   );
 }
