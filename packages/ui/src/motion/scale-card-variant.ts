@@ -3,7 +3,7 @@ import type { Transition, Variants } from "motion/react";
 export const scaleCardVariant: Variants = {
   initial: { scale: 1 },
   hover: { scale: 1.015 },
-  tap: { scale: 0.985 },
+  tap: { scale: 1.009 },
 };
 
 export const scaleCardTransition: Transition = {

@@ -32,7 +32,7 @@ export function Header() {
                             style={{ willChange: "transform" }}
                         >
                             <Avatar className="size-10">
-                                <AvatarImage src="https://github.com/shadcn.png" alt="Portrait of Temitope Agboola" />
+                                <AvatarImage src="/placeholder.png" alt="Portrait of Temitope Agboola" />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                         </motion.div>
@@ -46,7 +46,7 @@ export function Header() {
                         transition={AVATAR_SHARED_TRANSITION}
                     >
                         <GlassWrapper
-                            className="size-10 rounded-full bg-secondary/20"
+                            className="size-10 rounded-full bg-secondary/10"
                             ariaLabel="Close about"
                         >
                             <Ellipsis className="size-4" />

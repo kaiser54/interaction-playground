@@ -35,7 +35,7 @@ function WorkExperienceCardRoot({
       initial="initial"
       whileHover="hover"
       className={cn(
-        "flex items-center gap-4 p-2 rounded-[16px] relative hover:bg-gray-1 transition-colors duration-300 cursor-pointer",
+        "flex items-center gap-4 p-2 rounded-[16px] relative hover:bg-gray-1 transition-colors cursor-pointer",
         className
       )}
       {...props}

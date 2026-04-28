@@ -24,7 +24,7 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID, ACTION_BUTTON_LAYOUT_ID }: 
     const overlayOpacity = useTransform(dragDistance, [0, 420], [1, 0.1]);
     const textOpacity = useTransform(dragDistance, [0, 220], [1, 0]);
     const imageScale = useTransform(dragDistance, [0, 420], [1, 0.55]);
-    const overlayBackground = useMotionTemplate`rgb(139 92 246 / ${overlayOpacity})`;
+    const overlayBackground = useMotionTemplate`rgb(25 25 25 / ${overlayOpacity})`;
 
     useEffect(() => {
         const { body } = document;
@@ -93,7 +93,7 @@ export function AboutMe({ onClose, AVATAR_LAYOUT_ID, ACTION_BUTTON_LAYOUT_ID }: 
                             animate(dragY, 0, { duration: 0.2, ease: "easeOut" });
                             animate(dragDistance, 0, { duration: 0.2, ease: "easeOut" });
                         }}
-                        src="https://github.com/shadcn.png"
+                        src="/placeholder.png"
                         alt="Portrait of Temitope Agboola"
                         className="size-50 md:size-85 mx-auto object-cover"
                         style={{
