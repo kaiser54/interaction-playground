@@ -2,6 +2,7 @@ export interface Position {
     title: string;
     company: string;
     description: string;
+    snippet: string;
     contributions?: string[];
     highlights?: string[];
     skills?: string[]; // e.g. ['Next.js', 'TypeScript', 'Tailwind CSS']
@@ -65,6 +66,7 @@ export interface Position {
           // duration: "Apr 2023 – Present · Lagos, Nigeria · Hybrid",
           description:
             "Led frontend engineering and product direction for Daash — a SaaS ecosystem empowering food businesses to manage inventory, storefronts, POS, and kitchen operations. Oversaw architectural design, code quality, and team scaling initiatives while aligning product vision with user feedback.",
+          snippet: "2022 • Senior Frontend Engineer",
           highlights: [
             "Defined and implemented a scalable component-driven architecture using Vue 3, Nuxt 3 and TypeScript.",
             "Built POS, storefront and inventory modules that improved transaction speed by 40% and reduced user onboarding time by 30%.",
@@ -88,6 +90,7 @@ export interface Position {
           duration: "Sep 2022 – Apr 2023 · Lagos, Nigeria · Remote",
           description:
             "Owned the frontend development of GoSource, a B2B procurement and logistics platform. Partnered with product and design teams to launch the MVP that quickly gained traction among local distributors.",
+          snippet: "2022 • Frontend Engineer",
           highlights: [
             "Delivered the MVP frontend in record time, aligning business goals with UX precision.",
             "Optimized page load and API integration, contributing to $70K in revenue within the first two months post-launch.",
@@ -111,6 +114,7 @@ export interface Position {
           duration: "Feb 2022 – Sep 2022 · Lagos, Nigeria",
           description:
             "Reached out to, to help transition IPC-Africa’s core operations from manual workflows to digital systems through modern web applications.",
+          snippet: "2022 • Frontend Developer",
           highlights: [
             "Collaborated with the CEO and key stakeholders to understand the business needs and the pain points of the users.",
             "Developed internal admin dashboards and workflow automation tools.",
@@ -141,6 +145,7 @@ export interface Position {
           duration: "Apr 2024 – Present · Lagos, Nigeria · Hybrid",
           description:
             "Built and maintained scalable frontend solutions for multiple client-facing fintech, agri-tech, and real-estate platforms under Acumen’s design-led engineering approach. Delivered highly-performant, maintainable code with focus on reliability and long-term scalability.",
+          snippet: "2024 • Frontend Engineer",
           highlights: [
             "Architected reusable UI components across 5 major projects, cutting new feature delivery time by 40%.",
             "Integrated CI/CD pipelines and end-to-end testing (Cypress, Jest) for faster, more reliable releases.",
@@ -182,6 +187,7 @@ export interface Position {
           // duration: "Feb 2024 – May 2024 · London, United Kingdom · Remote",
           description:
             "Contributed to the design and development of Overlap — a team collaboration and productivity tool. Collaborated closely with backend engineers and product designers to deliver a visually cohesive, performant web experience.",
+            snippet: "2024 • Frontend Engineer",
             highlights: [
               "Implemented full route authentication to isolate workspace projects and prevent cross-access data leaks.",
               "Optimized rendering performance (e.g. by memoization, lazy loading, virtualization) to reduce UI lag and improve frame rates under heavy data loads.",

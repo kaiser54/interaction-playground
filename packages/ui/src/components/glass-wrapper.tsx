@@ -63,6 +63,7 @@ export function GlassWrapper({
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      measure();
       down = true;
       activePointerId = e.pointerId;
       el.setPointerCapture(e.pointerId);
@@ -75,6 +76,7 @@ export function GlassWrapper({
     const onPointerMove = (e: PointerEvent) => {
       if (!down) return;
       if (activePointerId !== null && e.pointerId !== activePointerId) return;
+      measure();
       move(e);
     };
 
@@ -89,6 +91,10 @@ export function GlassWrapper({
     };
 
     const loop = () => {
+      if (down) {
+        measure();
+      }
+
       const fsx = (target.sx - state.sx) * stiffness;
       state.vsx = (state.vsx + fsx) * (1 - damping);
       state.sx += state.vsx;

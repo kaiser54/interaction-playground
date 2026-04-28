@@ -40,17 +40,21 @@ export function Header() {
                         <span className="block size-10" aria-hidden />
                     )}
                 </button>
-                <motion.div
-                    layoutId={ACTION_BUTTON_LAYOUT_ID}
-                    transition={AVATAR_SHARED_TRANSITION}
-                >
-                    <GlassWrapper
-                        className="size-10 rounded-full bg-secondary/20"
-                        ariaLabel="Close about"
+                {!isAboutOpen ? (
+                    <motion.div
+                        layoutId={ACTION_BUTTON_LAYOUT_ID}
+                        transition={AVATAR_SHARED_TRANSITION}
                     >
-                        <Ellipsis className="size-4" />
-                    </GlassWrapper>
-                </motion.div>
+                        <GlassWrapper
+                            className="size-10 rounded-full bg-secondary/20"
+                            ariaLabel="Close about"
+                        >
+                            <Ellipsis className="size-4" />
+                        </GlassWrapper>
+                    </motion.div>
+                ) : (
+                    <span className="block size-10" aria-hidden />
+                )}
             </div>
             <AnimatePresence>
                 {isAboutOpen ? (

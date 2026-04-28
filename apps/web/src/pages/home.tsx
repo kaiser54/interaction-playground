@@ -1,7 +1,7 @@
 import { MicroInteractionCard } from "@workspace/ui/components/micro-interaction-card";
 import { PersonalProjectCard } from "@workspace/ui/components/personal-project-card";
-import { WorkExperienceSection } from "../components/work-experience-section";
-import { MorphingDialogBasicTwo } from "../components/text-morph";
+import { WorkExperienceCard } from "@workspace/ui/components/work-experience-card";
+import { experienceData } from '../lib/experience-data';
 
 const PERSONAL_PROJECTS = [
   { title: "Posthearts", description: "A web app that helps people write, design, and send letters to others or future self." },
@@ -51,7 +51,23 @@ export function Home() {
             <h2 className="text-sm font-medium text-default">Where I've Worked</h2>
             <p className="text-sm text-neutral">Teams and roles that shaped my product thinking and interaction craft.</p>
             <div className="pt-2">
-              <WorkExperienceSection />
+              {experienceData.map((experience, index) => (
+                <div key={`${experience.name}-${experience.year}-${index}`}>
+                  <WorkExperienceCard>
+                    <WorkExperienceCard.Avatar avatarSrc={experience.logoUrl} />
+                    <WorkExperienceCard.Content>
+                      <WorkExperienceCard.Company>{experience.name}</WorkExperienceCard.Company>
+                      <WorkExperienceCard.Meta
+                        period={experience.year}
+                        role={experience.positions[0]?.title ?? "Role unavailable"}
+                      />
+                    </WorkExperienceCard.Content>
+                  </WorkExperienceCard>
+                  {index < experienceData.length - 1 ? (
+                    <div className="border-b border-border w-[calc(100%-32px)] mx-auto" />
+                  ) : null}
+                </div>
+              ))}
             </div>
           </section>
           <section className="container-wrapper space-y-4 w-full">
@@ -99,9 +115,6 @@ export function Home() {
               ))}
             </div>
           </section>
-          <div className="container-wrapper w-full">
-            <MorphingDialogBasicTwo />
-          </div>
         </section>
       </div>
     </div>
